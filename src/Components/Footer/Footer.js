@@ -1,12 +1,44 @@
 import React, { Component } from "react";
 
 class Input extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: "",
+        };
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onChange(e) {
+        this.setState({
+            title: e.target.value,
+        });
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        this.props.addItem(this.state.title);
+        this.setState({
+            title: "",
+        });
+    }
     render() {
         return (
-            <div className='input__item'>
-                <input type='text' placeholder='What is your item ?' className="border-r"/>
-                <button className="btn border-r" onClick={this.props.onClick}>Add</button>
-            </div>
+            <form className='input__item' onSubmit={this.onSubmit}>
+                <input
+                    type='text'
+                    placeholder='What is your item ?'
+                    className='border-r'
+                    value={this.state.title}
+                    onChange={this.onChange}
+                />
+                <input
+                    className='btn border-r'
+                    type='submit'
+                    value='Add'
+                />
+            </form>
         );
     }
 }
@@ -28,9 +60,9 @@ class Footer extends Component {
 
     render() {
         if (this.state.hasInput) {
-            return(
-                <footer className="hasInput">
-                    <Input onClick={this.onClick}/>
+            return (
+                <footer className='hasInput'>
+                    <Input addItem={this.props.addItem} />
                 </footer>
             );
         } else {

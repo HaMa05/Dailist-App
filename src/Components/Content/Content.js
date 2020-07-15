@@ -6,8 +6,8 @@ class Content extends Component {
     render() {
         return(
             <div className="Content">
-                <Upcoming/>
-                <Finishing/>
+                <Upcoming Upcoming={this.props.Upcoming} isComplete={this.props.isComplete}/>
+                <Finishing Finishing={this.props.Finishing}/>
             </div>
         );
     }

@@ -81,8 +81,14 @@ footer .icon-plus i {
     position: relative;
 }
 
+.Upcoming {
+    max-height: 270px;
+    /* overflow: hidden; */
+}
 .list {
-    list-style: none;
+    max-height: 250px;
+    list-style: none;   
+    overflow-y: scroll
 }
 
 .list li {
@@ -116,6 +122,7 @@ footer .icon-plus i {
 }
 
 .Content > div > .title {
+    margin-bottom: 10px;
     margin-left: 10px;
     font-weight: bold;
     letter-spacing: 2.5px;
