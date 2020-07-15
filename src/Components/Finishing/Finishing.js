@@ -8,7 +8,7 @@ class Finishing extends Component {
                 <p className='title'>FINISHING</p>
                 <ul className='list'>
                    {Finishing && Finishing.map((e, index) => (
-                        <li key={index}><span>{e.number}:</span>{e.title}</li>
+                        <li key={index} className="finish"><span>{e.number}:</span>{e.title}</li>
                     ))} 
                 </ul>
             </div>

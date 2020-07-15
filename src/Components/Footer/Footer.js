@@ -22,6 +22,7 @@ class Input extends Component {
         this.setState({
             title: "",
         });
+        this.props.hasInput();
     }
     render() {
         return (
@@ -62,7 +63,7 @@ class Footer extends Component {
         if (this.state.hasInput) {
             return (
                 <footer className='hasInput'>
-                    <Input addItem={this.props.addItem} />
+                    <Input addItem={this.props.addItem} hasInput={this.onClick} />
                 </footer>
             );
         } else {

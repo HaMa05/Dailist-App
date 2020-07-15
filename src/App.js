@@ -48,33 +48,36 @@ class App extends Component {
 
     onComplete(e) {
         return (event) => {
-            const { Upcoming } = this.state;
+            const { Upcoming, Finishing } = this.state;
             // let isComplete = e.isComplete;
             let index = Upcoming.indexOf(e);
             this.setState({
                 Upcoming: [
                     ...Upcoming.filter((e) => Upcoming.indexOf(e) !== index),
                 ],
+                Finishing: [
+                    ...Finishing,
+                    { title: e.title, number: e.number, isComplete: true },
+                ],
             });
         };
     }
 
     render() {
-        let {hasContent, keyStorage, Upcoming, Finishing } = this.state;
-        if(Upcoming.length === 0 && Finishing.length === 0) {
-            return(
+        let { hasContent, keyStorage, Upcoming, Finishing } = this.state;
+        if (Upcoming.length === 0 && Finishing.length === 0) {
+            return (
                 <div className='App'>
-                <div className='container'>
-                    <div className='container-content'>
-                        <Header />
-                        <NoContent />
-                        <Footer addItem={this.addItem} />
+                    <div className='container'>
+                        <div className='container-content'>
+                            <Header />
+                            <NoContent />
+                            <Footer addItem={this.addItem} />
+                        </div>
                     </div>
                 </div>
-            </div>
             );
         } else {
-
             return (
                 <div className='App'>
                     <div className='container'>
@@ -95,7 +98,6 @@ class App extends Component {
                 </div>
             );
         }
-        
     }
 }
 
